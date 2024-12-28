@@ -6,15 +6,17 @@
 
 {% block content %}
     <h1 class='text-center mt-4'>Blog Post</h1>
-    <h2>
         {% if form.instance.pk %}Edit Tweet 
         {% else %} Create Tweet 
         {% endif %}
-        <form method="post" enctype="multipart/form-data" class="form">
+        <form method="post" enctype="multipart/form-data" class="form text-sm">
             {% csrf_token %}
-            {{ form.as_p }}
-            <button class="btn btn-warning" type="submit">Submit</button>
+            <div class="mb-3">
+                {{ form.as_p }}
+            </div>
+            <button class="btn btn-warning btn-sm" type="submit">Submit</button>
         </form>
-        <a href={% url 'tweet_list' %}>Back to home page</a>
-    </h2>
+        <div class="mt-3">
+            <a href="{% url 'tweet_list' %}" class="btn btn-secondary btn-sm">Back to home page</a>
+        </div>
 {% endblock %}
